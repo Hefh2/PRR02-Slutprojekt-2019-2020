@@ -10,7 +10,7 @@ namespace PRR02_Slutprojekt_2019_2020
     {
         public string cultName;
         public int treasure;
-        public int supplies;
+        public int harvest;
         public int happiness;
         public int population;
         public int offerings;
@@ -19,7 +19,7 @@ namespace PRR02_Slutprojekt_2019_2020
         public CultInfo()
         {
             treasure = generator.Next(200, 601);
-            supplies = generator.Next(200, 601);
+            harvest = generator.Next(200, 601);
             happiness = generator.Next(200, 601);
             population = generator.Next(20, 61);
             offerings = generator.Next();
