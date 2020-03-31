@@ -13,7 +13,6 @@ namespace PRR02_Slutprojekt_2019_2020
         public int harvest;
         public int happiness;
         public int population;
-        public int offerings;
         public static Random generator = new Random();
 
         public CultInfo()
@@ -22,7 +21,6 @@ namespace PRR02_Slutprojekt_2019_2020
             harvest = generator.Next(200, 601);
             happiness = generator.Next(200, 601);
             population = generator.Next(20, 61);
-            offerings = generator.Next();
 
         }
 

@@ -11,6 +11,7 @@ namespace PRR02_Slutprojekt_2019_2020
         static void Main(string[] args)
         {
             CultInfo C = new CultInfo();
+            int eventsCleared = -1;
 
             //Loop för att välja namn för sin sekt och ser till att den är mellan 10 och 3 bokstäver lång.
             bool loop1 = true;
@@ -41,6 +42,26 @@ namespace PRR02_Slutprojekt_2019_2020
             bool loop2 = true;
             while (loop2 == true)
             {
+                //Ticks the event counter up by 1
+                eventsCleared++;
+                //Makes sure population and happiness doesn't go under 0
+                if (C.population < 0)
+                {
+                    C.population = 0;
+                }
+                if (C.happiness < 0)
+                {
+                    C.happiness = 0;
+                }
+                //Changes treasure and harvest according to your population
+                C.treasure += C.population;
+                C.harvest -= C.population;
+                //Makes sure harvest doesn't go under 0
+                if (C.harvest < 0)
+                {
+                    C.harvest = 0;
+                }
+                //Clears console and writes out your information
                 Console.Clear();
                 Console.WriteLine(
                     "\nCult name: " + C.cultName +
@@ -50,10 +71,24 @@ namespace PRR02_Slutprojekt_2019_2020
                     "\nHappiness: " + C.happiness
                     );
 
+                
+                //Heres where the event is written
 
 
+                //Checks your stats if you lost and if some stats will decrease due to a lack in other stats.
+                if (C.happiness < 1 || C.population < 1)
+                {
+                    loop2 = false;
+                }
+                if (C.harvest < 1)
+                {
+                    C.population -= 5 + C.population / 10;
+                    C.happiness -= 20 + C.happiness / 10;
+                }
                 Console.ReadKey();
             }
+            Console.Clear();
+            Console.WriteLine("You survived through " + eventsCleared + " events!");
 
             Console.ReadKey();
         }
